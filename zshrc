@@ -6,7 +6,7 @@ alias bat='batcat'
 PROMPT='
 %n@%m %1~ %L %# '
 
-RPROMPT='%*'
+# RPROMPT='%*'
 
 #Fuctions
 funcion mkcd(){
@@ -16,3 +16,16 @@ funcion mkcd(){
 #Bat
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 
+function preexec() {
+  timer=$(($(date +%s%0N)/1000000))
+}
+
+function precmd() {
+  if [ $timer ]; then
+    now=$(($(date +%s%0N)/1000000))
+    elapsed=$(($now-$timer))
+
+    export RPROMPT="%* ${elapsed}ms"
+    unset timer
+  fi
+}
