@@ -6,16 +6,13 @@ alias bat='batcat'
 PROMPT='
 %n@%m %1~ %L %# '
 
-# RPROMPT='%*'
-
 #Fuctions
-funcion mkcd(){
+#Make folder and cd into it
+function mkcd(){
 	mkdir -p "$@" && cd "$_";
 }
 
-#Bat
-export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-
+#Add the execution time of the last command to RPROMPT
 function preexec() {
   timer=$(($(date +%s%0N)/1000000))
 }
@@ -29,3 +26,6 @@ function precmd() {
     unset timer
   fi
 }
+
+#Bat
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
