@@ -11,7 +11,7 @@ alias bat='batcat'
 # Prompts
 # PROMPT=
 # %n@%m %1~ %L %# '
-PROMPT='%F{magenta}[%f%F{yellow}%n%f@%F{green}%m%f%F{magenta}]%f%F{cyan} %1~ %f%F{yellow}%L%f'
+PROMPT='%F{magenta}[%f%F{yellow}%n%f@%F{green}%m%f%F{magenta}]%f%F{cyan} %1~ %f%F{yellow}%L%f '
 
 
 #Fuctions
@@ -30,7 +30,8 @@ function precmd() {
     now=$(($(date +%s%0N)/1000000))
     elapsed=$(($now-$timer))
 
-    export RPROMPT="%* ${elapsed}s"
+    export RPROMPT="%* ${elapsed}s
+    "
     unset timer
   fi
 }
