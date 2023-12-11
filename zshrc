@@ -30,8 +30,7 @@ function precmd() {
     now=$(($(date +%s%0N)/1000000))
     elapsed=$(($now-$timer))
 
-    export RPROMPT="%* ${elapsed}s
-    "
+    export RPROMPT="%* ${elapsed}ms"
     unset timer
   fi
 }
