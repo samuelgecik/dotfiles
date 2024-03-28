@@ -1,0 +1,27 @@
+: 1709905365:0;bat .zsh_history
+: 1709905391:23;nano .zsh_history
+: 1709918552:0;cd .cache
+: 1709918593:0;cd ..
+: 1709918595:0;l
+: 1709918662:27;nano .zshrc
+: 1709918702:0;source .zshrc
+: 1709918708:0;ls
+: 1709918711:0;l
+: 1709918727:0;bat .zsh_history
+: 1709918759:0;fabric --listmodels
+: 1709920416:0;fabric -p pt https://youtu.be/PRqOj5qM1ic
+: 1709920449:0;pt https://youtu.be/PRqOj5qM1ic
+: 1709920646:0;cd dev/fabric
+: 1709920647:0;l
+: 1709920653:0;./setup.sh
+: 1709920718:0;bat setup.sh
+: 1709920783:0;source ~/.zshrc
+: 1709920791:0;fabric-api
+: 1709920819:0;fabric --listmodels
+: 1709920835:0;fabric-webui
+: 1709920902:0;bat .zshrc
+: 1709921399:0;fabric -p yt https://youtu.be/PRqOj5qM1ic
+: 1709921413:0;yt https://youtu.be/PRqOj5qM1ic
+: 1709923960:0;cd .config/fabric/
+: 1709923965:0;nano .env
+: 1709924068:0;yt https://youtu.be/PRqOj5qM1ic
