@@ -1,0 +1,75 @@
+# Enable timing functions
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec preexec
+add-zsh-hook precmd precmd
+
+# History in cache directory:
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=1000
+SAVEHIST=1000
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing nonexistent history.
+
+# Aliases
+alias l='ls -lAFh'
+alias bat='batcat'
+alias copy='xclip -selection clipboard'
+alias paste='xclip -selection clipboard -o'
+
+# Prompts
+# PROMPT=
+# %n@%m %1~ %L %# '
+PROMPT='%F{magenta}[%f%F{yellow}%n%f@%F{green}%m%f%F{magenta}]%f%F{cyan} %1~ %f%F{yellow}%L%f '
+
+
+#Fuctions
+#Make folder and cd into it
+function mkcd(){
+	mkdir -p "$@" && cd "$_";
+}
+
+#Add the execution time of the last command to RPROMPT
+function preexec() {
+  timer=$(($(date +%s%0N)/1000000))
+}
+
+function precmd() {
+  if [ $timer ]; then
+    now=$(($(date +%s%0N)/1000000))
+    elapsed=$(($now-$timer))
+
+    export RPROMPT="%* ${elapsed}ms"
+    unset timer
+  fi
+}
+
+#Bat
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+
+#\\\_ COMPLETIONS _///#
+# Basic auto/tab complete:
+autoload -U compinit
+# zstyle ':completion:*' completer _complete _match _approximate
+# zstyle ':completion:*' menu select
+zstyle ':completion:*' menu select fg=white,bg=blue
+# zstyle ':completion:*' menu yes fg=black,bg=cyan
+# zstyle ':completion:*' menu no fg=black,bg=red
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)		# Include hidden files.
+
+#PATH
+export PATH="/home/samo/.local/bin:$PATH"
+
+if [ -f "/home/samo/.config/fabric/fabric-bootstrap.inc" ]; then . "/home/samo/.config/fabric/fabric-bootstrap.inc"; fi
