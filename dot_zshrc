@@ -1,3 +1,6 @@
+#SOURCE
+source ~/.bashrc
+
 # Enable timing functions
 autoload -Uz add-zsh-hook
 add-zsh-hook preexec preexec
