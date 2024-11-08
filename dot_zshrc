@@ -1,3 +1,6 @@
+#SOURCE
+source ~/.bashrc
+
 # Enable timing functions
 autoload -Uz add-zsh-hook
 add-zsh-hook preexec preexec
@@ -71,7 +74,7 @@ compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 #PATH
-export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 if [ -f "/home/samo/.config/fabric/fabric-bootstrap.inc" ]; then . "/home/samo/.config/fabric/fabric-bootstrap.inc"; fi
