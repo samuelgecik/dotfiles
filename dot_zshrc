@@ -22,6 +22,7 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 # Aliases
+alias ~='cd ~'
 alias l='ls -lAFh'
 alias bat='batcat'
 alias copy='xclip -selection clipboard'
@@ -70,6 +71,7 @@ compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 #PATH
-export PATH="/home/samo/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 if [ -f "/home/samo/.config/fabric/fabric-bootstrap.inc" ]; then . "/home/samo/.config/fabric/fabric-bootstrap.inc"; fi
