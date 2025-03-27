@@ -1,0 +1,39 @@
+{
+  "mcpServers": {
+    "brave-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-brave-search"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "BSA2DKMlZbcM9Y3sKJETLuaW9kZq9XP"
+      }
+    },
+    "git": {
+      "command": "python3",
+      "args": [
+        "-m",
+        "mcp_server_git",
+        "--repository",
+        "/home/"
+      ],
+      "disabled": false,
+      "alwaysAllow": []
+    },
+    "puppeteer": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-puppeteer"
+      ]
+    },
+    "fetch": {
+      "command": "python3",
+      "args": [
+        "-m",
+        "mcp_server_fetch"
+      ]
+    }
+  }
+}
